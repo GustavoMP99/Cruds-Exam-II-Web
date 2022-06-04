@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'ExamII';
+export class MainPageComponent implements OnInit {
+
   constructor() { }
 
   ngOnInit(): void {
 
     $(document).ready(function () {
+        
       $('#dismiss, .overlay').on('click', function () {
           $('#sidebar').removeClass('active');
           $('.overlay').removeClass('active');
@@ -24,4 +26,5 @@ export class AppComponent implements OnInit {
       });
     });
   }
+
 }
