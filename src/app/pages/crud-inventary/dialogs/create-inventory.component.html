@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="mb-1">Add product to inventory</h2>
+<hr class="m-0" />
+<mat-form-field class="w-100">
+    <mat-select class="">
+        <mat-option *ngFor="let product of products" [value]="product.id_product">
+          {{ product.name }}
+        </mat-option>
+      </mat-select>      
+</mat-form-field>
