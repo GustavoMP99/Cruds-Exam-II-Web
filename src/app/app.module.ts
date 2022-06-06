@@ -15,10 +15,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TokenInterceptor } from './token.interceptor';
 import { CreateInventoryComponent } from './pages/crud-inventary/dialogs/create-inventory.component';
+import { CreateCustomersComponent } from './pages/crud-clients/dialogs/create-customers.component';
+import { CreateProductsComponent } from './pages/crud-products/dialogs/create-products.component';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-
-
+import {MatCardModule} from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -31,7 +37,9 @@ import { MatSelectModule } from '@angular/material/select';
     CrudInventaryComponent,
     CrudBillingComponent,
     CrudPaymentTypeComponent,
-    CreateInventoryComponent
+    CreateInventoryComponent,
+    CreateCustomersComponent,
+    CreateProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +50,12 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
