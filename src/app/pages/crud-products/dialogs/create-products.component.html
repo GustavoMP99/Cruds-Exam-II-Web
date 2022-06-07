@@ -1,0 +1,50 @@
+<h2 mat-dialog-title class="mb-1">{{ actionTitle }}</h2>
+<hr class="m-0" />
+<mat-card-content>
+  <form name="customerForm">
+    <p>
+      <mat-form-field>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          matInput
+          placeholder="Name"
+          required
+          name="name"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input
+          type="number"
+          [(ngModel)]="price"
+          matInput
+          placeholder="Price"
+          required
+          name="price"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input
+          type="number"
+          [(ngModel)]="tax"
+          matInput
+          placeholder="Tax"
+          required
+          name="tax"
+        />
+      </mat-form-field>
+    </p>
+    <button
+      type="submit"
+      (click)="postCustomer()"
+      mat-raised-button
+      color="primary"
+    >
+      {{ actionButton }}
+    </button>
+  </form>
+</mat-card-content>

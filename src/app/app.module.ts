@@ -15,6 +15,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TokenInterceptor } from './token.interceptor';
 import { CreateInventoryComponent } from './pages/crud-inventary/dialogs/create-inventory.component';
+import { CreateCustomersComponent } from './pages/crud-clients/dialogs/create-customers.component';
+import { CreateProductsComponent } from './pages/crud-products/dialogs/create-products.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
@@ -25,9 +27,9 @@ import { PaymentTypeDialog } from "./pages/crud-payment-type/dialogs/payment-typ
 import { CreateBillDialog } from "./pages/crud-billing/dialogs/create-bill-dialog.component"
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -42,7 +44,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     CrudPaymentTypeComponent,
     CreateInventoryComponent,
     PaymentTypeDialog,
-    CreateBillDialog
+    CreateBillDialog,
+    CreateCustomersComponent,
+    CreateProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,12 +58,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     MatDialogModule,
     MatSelectModule,
-    FormsModule,
-    MatInputModule,
     MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
