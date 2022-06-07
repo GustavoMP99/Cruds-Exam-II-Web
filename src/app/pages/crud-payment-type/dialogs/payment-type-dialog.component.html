@@ -1,0 +1,49 @@
+<h2 *ngIf="isCreate" mat-dialog-title class="mb-1">Create new payment type</h2>
+<h2 *ngIf="!isCreate" mat-dialog-title class="mb-1">Update payment type</h2>
+<hr class="mt-0" />
+<form #createForm="ngForm">
+
+  <!-- Name -->
+  <mat-form-field class="w-100">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      [(ngModel)]="paymentTypeModel.name"
+      required
+      name="name"
+    />
+  </mat-form-field>
+
+  <!-- Description -->
+  <mat-form-field class="w-100">
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      [(ngModel)]="paymentTypeModel.description"
+      required
+      name="description"
+    />
+  </mat-form-field>
+  
+</form>
+<div class="d-flex">
+  <span class="spacer"></span>
+  <button
+    *ngIf="isCreate"
+    mat-raised-button
+    color="primary"
+    (click)="create()"
+    [disabled]="!createForm.valid"
+  >
+    Add
+  </button>
+  <button
+    *ngIf="!isCreate"
+    mat-raised-button
+    color="primary"
+    (click)="update()"
+    [disabled]="!createForm.valid"
+  >
+    Update
+  </button>
+</div>

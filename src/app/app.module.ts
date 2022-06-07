@@ -17,14 +17,19 @@ import { TokenInterceptor } from './token.interceptor';
 import { CreateInventoryComponent } from './pages/crud-inventary/dialogs/create-inventory.component';
 import { CreateCustomersComponent } from './pages/crud-clients/dialogs/create-customers.component';
 import { CreateProductsComponent } from './pages/crud-products/dialogs/create-products.component';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import {MatCardModule} from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { PaymentTypeDialog } from "./pages/crud-payment-type/dialogs/payment-type-dialog.component"
+import { CreateBillDialog } from "./pages/crud-billing/dialogs/create-bill-dialog.component"
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,6 +43,8 @@ import { FormsModule } from '@angular/forms';
     CrudBillingComponent,
     CrudPaymentTypeComponent,
     CreateInventoryComponent,
+    PaymentTypeDialog,
+    CreateBillDialog,
     CreateCustomersComponent,
     CreateProductsComponent
   ],
@@ -51,6 +58,10 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDialogModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
@@ -59,6 +70,7 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent]
 })

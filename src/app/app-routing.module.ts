@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'crudClients', component:CrudClientsComponent},
   {path:'crudInventary', component:CrudInventaryComponent},
   {path:'crudProducts', component:CrudProductsComponent},
-  {path:'crudPaymentType', component:CrudProductsComponent}
+  {path:'crudPaymentType', component:CrudPaymentTypeComponent}
 ];
 
 @NgModule({
