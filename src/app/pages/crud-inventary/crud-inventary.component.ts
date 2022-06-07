@@ -14,8 +14,6 @@ import { CreateInventoryComponent } from "./dialogs/create-inventory.component"
 })
 export class CrudInventaryComponent implements OnInit, AfterViewInit {
 
-  data = '';
-
   displayedColumns = ['id_inventory', 'product', 'quantity', 'min_quantity', 'max_quantity',
     'taxed', 'actions'];
 
@@ -33,8 +31,6 @@ export class CrudInventaryComponent implements OnInit, AfterViewInit {
     this.getAllList();
   }
 
-  // ----------------------------------------------------------------------------------------------
-
   getAllList = () => {
     this._inventoryService.getAllList().subscribe({
       next: ( res: any ) => {
@@ -44,11 +40,36 @@ export class CrudInventaryComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // ----------------------------------------------------------------------------------------------
-
+  delete = ( id: number ) => {
+    this._inventoryService.delete( id ).subscribe({
+      next: () => {
+        Swal.fire('Success', 'Product deleted from the inventory', 'success');
+        this.getAllList();
+       },
+      error: () => Swal.fire('Error', 'An error has ocurred', 'error')
+    });
+  }
+    
   openCreateDialog = () => {
     const dialogRef = this._dialog.open( CreateInventoryComponent, {
       width: '600px'
+    });
+    dialogRef.afterClosed().subscribe( (res) => {
+      if (res === 'reload') {
+        this.getAllList();
+      }
+    });
+  }
+
+  openUpdateDialog = ( item: {} ) => {
+    const dialogRef = this._dialog.open( CreateInventoryComponent, {
+      width: '600px',
+      data: {...item}
+    });
+    dialogRef.afterClosed().subscribe( (res) => {
+      if (res === 'reload') {
+        this.getAllList();
+      }
     });
   }
 

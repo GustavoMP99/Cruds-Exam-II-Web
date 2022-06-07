@@ -17,6 +17,15 @@ import { TokenInterceptor } from './token.interceptor';
 import { CreateInventoryComponent } from './pages/crud-inventary/dialogs/create-inventory.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { PaymentTypeDialog } from "./pages/crud-payment-type/dialogs/payment-type-dialog.component"
+import { CreateBillDialog } from "./pages/crud-billing/dialogs/create-bill-dialog.component"
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -31,7 +40,9 @@ import { MatSelectModule } from '@angular/material/select';
     CrudInventaryComponent,
     CrudBillingComponent,
     CrudPaymentTypeComponent,
-    CreateInventoryComponent
+    CreateInventoryComponent,
+    PaymentTypeDialog,
+    CreateBillDialog
   ],
   imports: [
     BrowserModule,
@@ -42,10 +53,17 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent]
 })

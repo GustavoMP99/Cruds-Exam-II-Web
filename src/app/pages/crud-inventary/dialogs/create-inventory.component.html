@@ -1,9 +1,75 @@
-<h2 mat-dialog-title class="mb-1">Add product to inventory</h2>
-<hr class="m-0" />
-<mat-form-field class="w-100">
-    <mat-select class="">
-        <mat-option *ngFor="let product of products" [value]="product.id_product">
-          {{ product.name }}
-        </mat-option>
-      </mat-select>      
-</mat-form-field>
+<h2 *ngIf="isCreate" mat-dialog-title class="mb-1">Add product to inventory</h2>
+<h2 *ngIf="!isCreate" mat-dialog-title class="mb-1">Update</h2>
+<hr class="mt-0" />
+<form #createForm="ngForm">
+  <!-- Product -->
+  <mat-form-field class="w-100">
+    <mat-label>Producto</mat-label>
+    <mat-select [(ngModel)]="inventoryModel.id_product" name="product" required>
+      <mat-option *ngFor="let product of products" [value]="product.id_product">
+        {{ product.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- Quantity -->
+  <mat-form-field class="w-100">
+    <mat-label>Quantity</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="inventoryModel.quantity"
+      required
+      name="quantity"
+    />
+  </mat-form-field>
+  <!-- Min Quantity -->
+  <mat-form-field class="w-100">
+    <mat-label>Min Quantity</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="inventoryModel.min_quantity"
+      required
+      name="min_quantity"
+    />
+  </mat-form-field>
+  <!-- Max Quantity -->
+  <mat-form-field class="w-100">
+    <mat-label>Max Quantity</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="inventoryModel.max_quantity"
+      required
+      name="max_quantity"
+    />
+  </mat-form-field>
+  <!-- Taxed -->
+  <div>
+    <mat-radio-group [(ngModel)]="inventoryModel.taxed" required name="taxed">
+      <mat-radio-button [value]="true" class="mr-15"> Taxed </mat-radio-button>
+      <mat-radio-button [value]="false"> Untaxed </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>
+<div class="d-flex">
+  <span class="spacer"></span>
+  <button
+    *ngIf="isCreate"
+    mat-raised-button
+    color="primary"
+    (click)="addProductToInventory()"
+    [disabled]="!createForm.valid"
+  >
+    Add
+  </button>
+  <button
+    *ngIf="!isCreate"
+    mat-raised-button
+    color="primary"
+    (click)="update()"
+    [disabled]="!createForm.valid"
+  >
+    Update
+  </button>
+</div>
