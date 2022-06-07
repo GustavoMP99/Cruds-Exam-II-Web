@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../services/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductsComponent } from "./dialogs/create-products.component"
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -66,13 +67,14 @@ export class CrudProductsComponent implements OnInit {
   deleteCustomer = (id:number) => {
     this._productService.delete(id).subscribe({
       next:(res)=>{
-        alert("Customer deleted")
-        location.reload()
+        Swal.fire("Done", "Customer deleted!", "success").then(() => {
+          location.reload()
+        });
       },
       error: (err) => {
         console.log(id)
         console.log(err)
-        alert("Error deleting the customer")
+        Swal.fire("Error", "Customer not deleted!", "error");
       },
     });
   };

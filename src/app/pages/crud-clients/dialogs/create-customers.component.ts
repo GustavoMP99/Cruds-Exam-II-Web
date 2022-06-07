@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClientsService } from '../../../services/clients.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -48,25 +48,26 @@ export class CreateCustomersComponent implements OnInit {
     this._clientService.create(cus).subscribe({
       error: (err) => {
         if (err.status != 201) {
-          alert("Something went wrong!")
-          console.log('Error');
+          Swal.fire("Error!", "Customer not created!", "error");
           console.log(err);
         }
         else{
-          alert("Created successfully!")
-          location.reload()
+          Swal.fire("Done", "Customer created!", "success").then(() => {
+            location.reload()
+          });
         }
       },
     });
   }else{
     this._clientService.update(this.actualID, cus).subscribe({
       next:(res)=>{
-        alert("Customer edited")
-        location.reload()
+        Swal.fire("Done", "Customer updated!", "success").then(() => {
+          location.reload()
+        });
+        
       },
       error: (err) => {
-          alert("Something went wrong!")
-          console.log('Error');
+        Swal.fire("Error!", "Customer not updated!", "error");
           console.log(err);
       },
     });
